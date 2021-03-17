@@ -1,0 +1,133 @@
+object Config {
+
+    object Android {
+
+        const val versionName = "1.0.0"
+        const val versionCode = 1
+        const val applicationId = "com.vnykyt.placesearch"
+
+        const val minSdkVersion = 24
+        const val targetSdkVersion = 30
+        const val compileSdkVersion = 30
+    }
+
+    object Versions {
+
+        // Base
+        const val gradlePlugin = "4.1.1"
+        const val kotlinLanguage = "1.4.31"
+        const val googlePlayServices = "4.3.5"
+
+        // DI
+        const val koin_version = "2.2.2"
+
+        // RxJava
+        const val rxJava = "3.0.11"
+        const val rxAndroid = "3.0.0"
+        const val rxBinding = "4.0.0"
+        const val rxKotlin = "3.0.1"
+
+        // Arch components
+        const val acLifecycle = "2.3.0"
+        const val acNavigation = "2.3.3"
+
+        // UI
+        const val materialComponents = "1.2.0"
+        const val swipeRefreshLayout = "1.0.0"
+        const val appcompat = "1.2.0"
+        const val constraintLayout = "2.0.4"
+        const val inputMask = "4.1.0"
+        const val paging = "3.0.0-alpha09"
+        const val lottie = "3.6.1"
+        const val glide = "4.11.0"
+
+        // Network
+        const val gson = "2.8.6"
+        const val loggingInterceptor = "3.1.0"
+        const val okHttp = "4.7.2"
+        const val retrofit = "2.9.0"
+
+        // Room
+        const val room = "2.2.5"
+
+        // Utils
+        const val ktx = "1.3.2"
+        const val threeTenAbp = "1.2.1"
+        const val timber = "4.7.1"
+        const val preference = "1.1.1"
+
+        //Google services
+        const val location_service = "18.0.0"
+
+        // Development
+        const val stetho = "1.5.1"
+
+        // Test
+        const val jUnit = "5.6.2"
+        const val mockitoCore = "3.3.3"
+        const val mockitoKotlin = "2.2.0"
+    }
+
+    object Libs {
+
+        // Kotlin
+        const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinLanguage}"
+        const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
+
+        // DI
+        const val koin = "org.koin:koin-android:${Versions.koin_version}"
+        const val koinScope = "org.koin:koin-android-scope:${Versions.koin_version}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin_version}"
+
+        // Glide
+        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+        // Arch components
+        const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.acLifecycle}"
+        const val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.acLifecycle}"
+        const val lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata:${Versions.acLifecycle}"
+        const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.acLifecycle}"
+        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.acNavigation}"
+        const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.acNavigation}"
+
+        // UI
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
+        const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+        const val pagination = "androidx.paging:paging-runtime:${Versions.paging}"
+        const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
+        // RxJava
+        const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
+        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
+        const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlin}"
+        const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}"
+
+        // Network
+        const val gson = "com.google.code.gson:gson:${Versions.gson}"
+        const val loggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:${Versions.loggingInterceptor}"
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okHttp}"
+        const val okHtttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+
+        // Room
+        const val room = "androidx.room:room-runtime:${Versions.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+        // Utils
+        const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
+        const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+        //Google services
+        const val locationService = "com.google.android.gms:play-services-location:${Versions.location_service}"
+
+        // Development
+        const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
+        const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
+    }
+}
