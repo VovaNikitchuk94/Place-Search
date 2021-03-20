@@ -53,8 +53,9 @@ object Config {
         const val threeTenAbp = "1.2.1"
         const val timber = "4.7.1"
 
-        //Google services
-        const val location_service = "18.0.0"
+        // Google
+        const val locationService = "18.0.0"
+        const val maps = "17.0.0"
 
         // Development
         const val stetho = "1.5.1"
@@ -120,8 +121,9 @@ object Config {
         const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-        //Google services
-        const val locationService = "com.google.android.gms:play-services-location:${Versions.location_service}"
+        // Google
+        const val locationService = "com.google.android.gms:play-services-location:${Versions.locationService}"
+        const val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
 
         // Development
         const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"

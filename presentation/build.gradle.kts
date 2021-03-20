@@ -9,6 +9,7 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(Config.Libs.ktx)
+    implementation(Config.Libs.maps)
 
     // DI
     implementation(Config.Libs.koin)
