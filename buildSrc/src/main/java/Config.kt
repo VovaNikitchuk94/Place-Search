@@ -19,7 +19,7 @@ object Config {
         const val googlePlayServices = "4.3.5"
 
         // DI
-        const val koin_version = "2.2.2"
+        const val koin = "2.2.2"
 
         // RxJava
         const val rxJava = "3.0.11"
@@ -28,7 +28,7 @@ object Config {
         const val rxKotlin = "3.0.1"
 
         // Arch components
-        const val acLifecycle = "2.3.0"
+        const val acLifecycle = "2.2.0"
         const val acNavigation = "2.3.3"
 
         // UI
@@ -36,8 +36,6 @@ object Config {
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
         const val constraintLayout = "2.0.4"
-        const val inputMask = "4.1.0"
-        const val paging = "3.0.0-alpha09"
         const val lottie = "3.6.1"
         const val glide = "4.11.0"
 
@@ -54,7 +52,6 @@ object Config {
         const val ktx = "1.3.2"
         const val threeTenAbp = "1.2.1"
         const val timber = "4.7.1"
-        const val preference = "1.1.1"
 
         //Google services
         const val location_service = "18.0.0"
@@ -75,9 +72,10 @@ object Config {
         const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
 
         // DI
-        const val koin = "org.koin:koin-android:${Versions.koin_version}"
-        const val koinScope = "org.koin:koin-android-scope:${Versions.koin_version}"
-        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin_version}"
+        const val koin = "org.koin:koin-android:${Versions.koin}"
+        const val koinCore = "org.koin:koin-core:${Versions.koin}"
+        const val koinScope = "org.koin:koin-android-scope:${Versions.koin}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
 
         // Glide
         const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
@@ -96,7 +94,6 @@ object Config {
         const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
         const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-        const val pagination = "androidx.paging:paging-runtime:${Versions.paging}"
         const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 
         // RxJava
