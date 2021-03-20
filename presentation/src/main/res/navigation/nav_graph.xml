@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/destination_splash">
+
+    <!--Screens-->
+    <fragment
+        android:id="@+id/destination_splash"
+        android:name="com.vnykyt.placesearch.presentation.feature.splash.SplashFragment" />
+
+    <fragment
+        android:id="@+id/destination_main"
+        android:name="com.vnykyt.placesearch.presentation.feature.main.MainFragment" />
+
+    <!--Actions-->
+    <action
+        android:id="@+id/action_main_screen"
+        app:destination="@id/destination_main"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+</navigation>

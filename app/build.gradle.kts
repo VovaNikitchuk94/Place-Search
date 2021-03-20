@@ -23,6 +23,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
+    implementation(Config.Libs.koin)
     implementation(Config.Libs.timber)
     implementation(Config.Libs.rxAndroid)
     implementation(Config.Libs.stetho)

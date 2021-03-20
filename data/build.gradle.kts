@@ -8,6 +8,7 @@ dependencies {
     implementation(project(":api"))
 
     implementation(Config.Libs.koin)
+    implementation(Config.Libs.koinCore)
     implementation(Config.Libs.rxKotlin)
     implementation(Config.Libs.locationService)
     implementation(Config.Libs.threeTenAbp)

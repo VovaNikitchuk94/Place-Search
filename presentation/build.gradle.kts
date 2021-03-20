@@ -30,7 +30,6 @@ dependencies {
     implementation(Config.Libs.materialComponents)
     implementation(Config.Libs.swipeRefreshLayout)
     implementation(Config.Libs.appcompat)
-    implementation(Config.Libs.pagination)
     implementation(Config.Libs.lottie)
 
     // Glide
