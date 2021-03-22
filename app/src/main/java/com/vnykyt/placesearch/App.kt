@@ -5,6 +5,7 @@ import android.os.Looper
 import com.facebook.stetho.Stetho
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.vnykyt.placesearch.data.di.DataModule
+import com.vnykyt.placesearch.domain.di.DomainModule
 import com.vnykyt.placesearch.presentation.di.PresentationModule
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -30,6 +31,7 @@ class App : Application() {
             modules(
                 listOf(
                     DataModule.get(),
+                    DomainModule.get(),
                     PresentationModule.get()
                 )
             )

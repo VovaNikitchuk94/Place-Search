@@ -26,6 +26,7 @@ object Config {
         const val rxAndroid = "3.0.0"
         const val rxBinding = "4.0.0"
         const val rxKotlin = "3.0.1"
+        const val rxRelay = "3.0.0"
 
         // Arch components
         const val acLifecycle = "2.2.0"
@@ -37,6 +38,7 @@ object Config {
         const val appcompat = "1.2.0"
         const val constraintLayout = "2.0.4"
         const val lottie = "3.6.1"
+        const val viewBindingDelegate = "1.4.4"
         const val glide = "4.11.0"
 
         // Network
@@ -96,12 +98,14 @@ object Config {
         const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
         const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+        const val viewBindingDelegate = "com.github.kirich1409:viewbindingpropertydelegate:${Versions.viewBindingDelegate}"
 
         // RxJava
         const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
         const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
         const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlin}"
         const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}"
+        const val rxRelay = "com.jakewharton.rxrelay3:rxrelay:${Versions.rxRelay}"
 
         // Network
         const val gson = "com.google.code.gson:gson:${Versions.gson}"
@@ -110,7 +114,7 @@ object Config {
         const val okHtttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-        const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+        const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
 
         // Room
         const val room = "androidx.room:room-runtime:${Versions.room}"
