@@ -7,14 +7,17 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
+import com.vnykyt.placesearch.api.repository.PlacesRepository
+import com.vnykyt.placesearch.data.network.api.PlacesClient
+import com.vnykyt.placesearch.data.repository.DataPlacesRepository
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
-import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Locale
 import java.util.concurrent.TimeUnit
@@ -22,16 +25,16 @@ import java.util.concurrent.TimeUnit
 @Suppress("LongMethod")
 object DataModule {
 
+    private const val BASE_PLACES_URL = "https://api.foursquare.com/v2/"
+
     private const val QUALIFIER_LOGGING_INTERCEPTOR = "QUALIFIER_LOGGING_INTERCEPTOR"
     private const val QUALIFIER_GSON_CONVERTER_FACTORY = "QUALIFIER_GSON_CONVERTER_FACTORY"
     private const val QUALIFIER_OKHTTP = "QUALIFIER_OKHTTP"
-    private const val QUALIFIER_OKHTTP_AUTHORIZED = "QUALIFIER_OKHTTP_AUTHORIZED"
     private const val QUALIFIER_RETROFIT = "QUALIFIER_RETROFIT"
 
     private const val TIMEOUT_SECONDS = 30L
 
     fun get() = module(override = true) {
-        // Network
         single {
             GsonBuilder()
                 .setLenient()
@@ -52,7 +55,6 @@ object DataModule {
             OkHttpClient.Builder()
                 .addInterceptor(get<Interceptor>(named(QUALIFIER_LOGGING_INTERCEPTOR)))
                 .addNetworkInterceptor(StethoInterceptor())
-                .certificatePinner(get())
                 .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
@@ -64,17 +66,13 @@ object DataModule {
         single(named(QUALIFIER_RETROFIT)) {
             Retrofit.Builder()
                 .addConverterFactory(get(named(QUALIFIER_GSON_CONVERTER_FACTORY)))
-                .addCallAdapterFactory(get())
-                .baseUrl("EnvironmentConfig.baseUrl()")
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .baseUrl(BASE_PLACES_URL)
                 .client(get(named(QUALIFIER_OKHTTP)))
                 .build()
         }
 
-        // Rest clients
         single { PreferenceManager.getDefaultSharedPreferences(get()) }
-        initApiModule()
-
-        // Utils
 
 //        single { SettingsPersister(get()) }
 //        single {
@@ -85,11 +83,8 @@ object DataModule {
         single { Geocoder(get(), Locale.US) }
 
         // Repositories
-//        single<PlacesRepository> { DataPlacesRepository() }
-    }
+        single<PlacesRepository> { DataPlacesRepository(get()) }
 
-    private fun Module.initApiModule() {
-
-//        single { get<Retrofit>(named(QUALIFIER_RETROFIT)).create(PlacesClientClient::class.java) }
+        single { get<Retrofit>(named(QUALIFIER_RETROFIT)).create(PlacesClient::class.java) }
     }
 }

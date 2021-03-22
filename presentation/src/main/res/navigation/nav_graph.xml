@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/destination_splash">
+    app:startDestination="@id/destination_main">
 
     <!--Screens-->
     <fragment
         android:id="@+id/destination_splash"
-        android:name="com.vnykyt.placesearch.presentation.feature.splash.SplashFragment" />
+        android:name="com.vnykyt.placesearch.presentation.feature.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/destination_main"
-        android:name="com.vnykyt.placesearch.presentation.feature.main.MainFragment" />
+        android:name="com.vnykyt.placesearch.presentation.feature.main.MainFragment"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/destination_map"
+        android:name="com.vnykyt.placesearch.presentation.feature.map.MapFragment"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/destination_place_details"
+        android:name="com.vnykyt.placesearch.presentation.feature.placedetails.PlaceDetailsFragment"
+        tools:layout="@layout/fragment_place_details" />
 
     <!--Actions-->
     <action
