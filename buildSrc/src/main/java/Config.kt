@@ -40,7 +40,8 @@ object Config {
         const val constraintLayout = "2.0.4"
         const val lottie = "3.6.1"
         const val viewBindingDelegate = "1.4.4"
-        const val glide = "4.11.0"
+        const val picasso = "2.71828"
+        const val picassoTransformations = "2.2.1"
 
         // Network
         const val gson = "2.8.6"
@@ -81,10 +82,6 @@ object Config {
         const val koinScope = "org.koin:koin-android-scope:${Versions.koin}"
         const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
 
-        // Glide
-        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-        const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-
         // Arch components
         const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.acLifecycle}"
         const val lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.acLifecycle}"
@@ -101,6 +98,8 @@ object Config {
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
         const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
         const val viewBindingDelegate = "com.github.kirich1409:viewbindingpropertydelegate:${Versions.viewBindingDelegate}"
+        const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+        const val picassoTransformations = "jp.wasabeef:picasso-transformations:${Versions.picassoTransformations}"
 
         // RxJava
         const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"

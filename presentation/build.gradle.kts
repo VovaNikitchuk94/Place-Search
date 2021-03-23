@@ -40,8 +40,8 @@ dependencies {
     implementation(Config.Libs.appcompat)
     implementation(Config.Libs.lottie)
     implementation(Config.Libs.viewBindingDelegate)
-    implementation(Config.Libs.glide)
-    kapt(Config.Libs.glideCompiler)
+    implementation(Config.Libs.picasso)
+    implementation(Config.Libs.picassoTransformations)
 
     implementation(Config.Libs.timber)
 }
