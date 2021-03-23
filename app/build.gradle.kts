@@ -27,4 +27,5 @@ dependencies {
     implementation(Config.Libs.timber)
     implementation(Config.Libs.rxAndroid)
     implementation(Config.Libs.stetho)
+    implementation(Config.Libs.appcompat)
 }

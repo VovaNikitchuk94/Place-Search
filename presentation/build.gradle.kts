@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -42,6 +43,5 @@ dependencies {
     implementation(Config.Libs.glide)
     kapt(Config.Libs.glideCompiler)
 
-    // Utils
     implementation(Config.Libs.timber)
 }

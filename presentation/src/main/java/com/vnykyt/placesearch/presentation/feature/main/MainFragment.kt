@@ -23,8 +23,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewBinding: FragmentMainBinding by viewBinding()
     private val adapter = PlaceListAdapter()
 
-    override fun onViewCreated(view: View, savedState: Bundle?) {
-        super.onViewCreated(view, savedState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewBinding.placesList.adapter = adapter
         viewBinding.searchInput
             .textChanges()

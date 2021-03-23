@@ -3,13 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/destination_main">
+    app:startDestination="@id/destination_splash">
 
-    <!--Screens-->
     <fragment
         android:id="@+id/destination_splash"
         android:name="com.vnykyt.placesearch.presentation.feature.splash.SplashFragment"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_main_screen"
+            app:destination="@id/destination_main"
+            app:enterAnim="@anim/anim_fade_in"
+            app:exitAnim="@anim/nothing"
+            app:popEnterAnim="@anim/nothing"
+            app:popExitAnim="@anim/nothing"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/destination_main"
@@ -25,12 +36,5 @@
         android:id="@+id/destination_place_details"
         android:name="com.vnykyt.placesearch.presentation.feature.placedetails.PlaceDetailsFragment"
         tools:layout="@layout/fragment_place_details" />
-
-    <!--Actions-->
-    <action
-        android:id="@+id/action_main_screen"
-        app:destination="@id/destination_main"
-        app:popUpTo="@id/nav_graph"
-        app:popUpToInclusive="true" />
 
 </navigation>
