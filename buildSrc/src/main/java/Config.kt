@@ -30,12 +30,13 @@ object Config {
 
         // Arch components
         const val acLifecycle = "2.2.0"
-        const val acNavigation = "2.3.3"
+        const val acNavigation = "2.3.4"
 
         // UI
         const val materialComponents = "1.2.0"
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
+        const val fragmentKtx = "1.3.0"
         const val constraintLayout = "2.0.4"
         const val lottie = "3.6.1"
         const val viewBindingDelegate = "1.4.4"
@@ -93,6 +94,7 @@ object Config {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.acNavigation}"
 
         // UI
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
         const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
