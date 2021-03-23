@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="100dp">
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,57 +30,101 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="8dp" />
+            app:layout_constraintGuide_begin="12dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_bottom"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="8dp" />
+            app:layout_constraintGuide_end="12dp" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/place_icon"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="@id/guideline_top"
             tools:src="@drawable/ic_map" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/icon_start_barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="start"
-            app:constraint_referenced_ids="place_icon" />
-
-        <TextView
-            android:id="@+id/name"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Title"
-            app:layout_constraintEnd_toStartOf="@id/icon_start_barrier"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#151a24"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toEndOf="@id/place_icon"
             app:layout_constraintTop_toTopOf="@id/guideline_top"
-            tools:text="Title" />
+            app:layout_goneMarginStart="0dp"
+            tools:text="@tools:sample/lorem[5]" />
 
-        <TextView
-            android:id="@+id/category"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Category"
-            app:layout_constraintEnd_toStartOf="@id/icon_start_barrier"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@id/name" />
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#151a24"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/text_name"
+            tools:text="@tools:sample/lorem[10]" />
 
-        <TextView
-            android:id="@+id/distance_from_center"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Distance from the center"
-            app:layout_constraintEnd_toStartOf="@id/icon_start_barrier"
-            app:layout_constraintStart_toStartOf="@id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@id/category" />
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#151a24"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/text_category"
+            tools:text="@tools:sample/lorem[5]" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_distance_from_center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#838ea4"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/text_address"
+            tools:text="@tools:sample/lorem[5]" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_phone_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_ripple_corners"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:focusable="true"
+            android:padding="4dp"
+            android:textColor="#151a24"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_phone"
+            app:drawableTint="?colorSecondaryVariant"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/text_distance_from_center"
+            tools:text="@tools:sample/us_phones"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

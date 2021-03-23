@@ -3,6 +3,7 @@ package com.vnykyt.placesearch.presentation.feature.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.vnykyt.placesearch.api.model.place.Places
+import com.vnykyt.placesearch.api.model.place.Venue
 import com.vnykyt.placesearch.domain.usecase.GetPlacesUseCase
 import com.vnykyt.placesearch.presentation.base.BaseViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -23,6 +24,10 @@ class MainViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { result -> handleResult(result) }
             .addTo(disposables)
+    }
+
+    fun placeClicked(venue: Venue) {
+
     }
 
     private fun handleResult(result: GetPlacesUseCase.Result) {
