@@ -42,6 +42,7 @@ dependencies {
     implementation(Config.Libs.viewBindingDelegate)
     implementation(Config.Libs.picasso)
     implementation(Config.Libs.picassoTransformations)
+    implementation(Config.Libs.quickPermissions)
 
     implementation(Config.Libs.timber)
 }

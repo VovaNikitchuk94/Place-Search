@@ -1,10 +1,10 @@
 package com.vnykyt.placesearch.presentation.feature.splash
 
-import androidx.lifecycle.ViewModel
+import com.vnykyt.placesearch.presentation.base.BaseViewModel
 import timber.log.Timber
 
 class SplashViewModel(
-) : ViewModel() {
+) : BaseViewModel() {
 
     fun onAnimationFinish() {
         Timber.e("onAnimationFinish")

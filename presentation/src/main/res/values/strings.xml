@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Place Search</string>
+
+    <string name="open_link_chooser.title">Open link…</string>
+    <string name="send_sms_chooser.title">Send to…</string>
+
 </resources>

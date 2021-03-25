@@ -7,4 +7,17 @@ data class Category(
     val pluralName: String,
     val primary: Boolean,
     val shortName: String
-)
+) {
+
+    companion object {
+
+        val EMPTY = Category(
+            icon = Icon.EMPTY,
+            id = "",
+            name = "",
+            pluralName = "",
+            primary = false,
+            shortName = ""
+        )
+    }
+}

@@ -27,6 +27,7 @@ object Config {
         const val rxBinding = "4.0.0"
         const val rxKotlin = "3.0.1"
         const val rxRelay = "3.0.0"
+        const val rxPermissions = "0.12"
 
         // Arch components
         const val acLifecycle = "2.2.0"
@@ -56,6 +57,7 @@ object Config {
         const val ktx = "1.3.2"
         const val threeTenAbp = "1.2.1"
         const val timber = "4.7.1"
+        const val quickPermissions = "0.4.1"
 
         // Google
         const val locationService = "18.0.0"
@@ -125,6 +127,7 @@ object Config {
         // Utils
         const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+        const val quickPermissions = "com.github.quickpermissions:quickpermissions-kotlin:${Versions.quickPermissions}"
 
         // Google
         const val locationService = "com.google.android.gms:play-services-location:${Versions.locationService}"
