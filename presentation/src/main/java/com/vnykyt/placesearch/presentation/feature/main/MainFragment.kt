@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.jakewharton.rxbinding4.view.clicks
 import com.jakewharton.rxbinding4.widget.queryTextChanges
 import com.vnykyt.placesearch.presentation.R
 import com.vnykyt.placesearch.presentation.databinding.FragmentMainBinding
@@ -40,8 +41,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             .throttleFirst()
             .subscribe {
 //                viewModel.placeClicked(it.venue)
-
                 viewBinding.root.findNavController().navigate(MainFragmentDirections.actionPlaceDetailsScreen(it.id, it.venue.distance))
+            }
+
+        viewBinding.actionOpenMap.clicks()
+            .throttleFirst()
+            .subscribe {
+                viewBinding.root.findNavController().navigate(MainFragmentDirections.actionFullMapScreen(viewBinding.searchInput.query.toString()))
             }
 
         observeUpdates()
@@ -60,6 +66,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.venuesAndGeocode.observe(viewLifecycleOwner, { places ->
             Timber.e("MainFragment >> $places")
             placeListAdapter.submitList(places.map { PlaceListItem(venue = it) })
+            viewBinding.actionOpenMap.isVisible = places.isNotEmpty()
         })
     }
 }

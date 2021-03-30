@@ -31,12 +31,27 @@
             android:id="@+id/action_place_details_screen"
             app:destination="@id/destination_place_details" />
 
+        <action
+            android:id="@+id/action_full_map_screen"
+            app:destination="@id/destination_map" />
+
     </fragment>
 
     <fragment
         android:id="@+id/destination_map"
         android:name="com.vnykyt.placesearch.presentation.feature.map.MapFragment"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+
+        <argument
+            android:name="query"
+            app:argType="string"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/action_place_details_screen"
+            app:destination="@id/destination_place_details" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/destination_place_details"

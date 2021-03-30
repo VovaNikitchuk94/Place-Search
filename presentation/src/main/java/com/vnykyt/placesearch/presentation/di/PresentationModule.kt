@@ -2,6 +2,7 @@ package com.vnykyt.placesearch.presentation.di
 
 import com.vnykyt.placesearch.api.system.ResourcesManager
 import com.vnykyt.placesearch.presentation.feature.main.MainViewModel
+import com.vnykyt.placesearch.presentation.feature.map.MapViewModel
 import com.vnykyt.placesearch.presentation.feature.placedetails.PlaceDetailsViewModel
 import com.vnykyt.placesearch.presentation.feature.splash.SplashViewModel
 import com.vnykyt.placesearch.presentation.system.ActivityProvider
@@ -16,6 +17,7 @@ object PresentationModule {
         single<ResourcesManager> { AppResourcesManager(get()) }
         viewModel { SplashViewModel() }
         viewModel { MainViewModel(get()) }
+        viewModel { MapViewModel(get()) }
         viewModel { PlaceDetailsViewModel(get(), get()) }
     }
 }
