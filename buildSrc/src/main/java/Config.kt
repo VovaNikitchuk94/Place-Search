@@ -37,7 +37,7 @@ object Config {
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
         const val fragmentKtx = "1.3.0"
-        const val constraintLayout = "2.0.4"
+        const val constraintLayout = "2.1.0-beta01"
         const val lottie = "3.6.1"
         const val viewBindingDelegate = "1.4.4"
         const val picasso = "2.71828"
@@ -56,6 +56,7 @@ object Config {
         const val ktx = "1.3.2"
         const val threeTenAbp = "1.2.1"
         const val timber = "4.7.1"
+        const val quickPermissions = "0.4.1"
 
         // Google
         const val locationService = "18.0.0"
@@ -125,6 +126,7 @@ object Config {
         // Utils
         const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+        const val quickPermissions = "com.github.quickpermissions:quickpermissions-kotlin:${Versions.quickPermissions}"
 
         // Google
         const val locationService = "com.google.android.gms:play-services-location:${Versions.locationService}"

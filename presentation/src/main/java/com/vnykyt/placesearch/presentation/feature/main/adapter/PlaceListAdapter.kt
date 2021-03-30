@@ -34,7 +34,7 @@ class PlaceListAdapter : IdentifiableListAdapter<PlaceListItem>(
                 }
                 binding.textCategory.text = venue.categories.firstOrNull()?.name
                 binding.textAddress.text = venue.location.formattedAddress.firstOrNull() ?: ""
-//                binding.textPhoneNumber.text = venue.
+                binding.textDistanceFromCenter.text = venue.distance
             }
         }
     }

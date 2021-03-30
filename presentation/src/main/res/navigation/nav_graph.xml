@@ -25,7 +25,13 @@
     <fragment
         android:id="@+id/destination_main"
         android:name="com.vnykyt.placesearch.presentation.feature.main.MainFragment"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+
+        <action
+            android:id="@+id/action_place_details_screen"
+            app:destination="@id/destination_place_details" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/destination_map"
@@ -35,6 +41,18 @@
     <fragment
         android:id="@+id/destination_place_details"
         android:name="com.vnykyt.placesearch.presentation.feature.placedetails.PlaceDetailsFragment"
-        tools:layout="@layout/fragment_place_details" />
+        tools:layout="@layout/fragment_place_details" >
+
+        <argument
+            android:name="placeId"
+            app:argType="string"
+            app:nullable="false" />
+
+        <argument
+            android:name="distance"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

@@ -2,7 +2,7 @@ package com.vnykyt.placesearch.presentation.feature.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.vnykyt.placesearch.api.model.place.Places
+import com.vnykyt.placesearch.api.model.place.VenuesAndGeocode
 import com.vnykyt.placesearch.api.model.place.Venue
 import com.vnykyt.placesearch.domain.usecase.GetPlacesUseCase
 import com.vnykyt.placesearch.presentation.base.BaseViewModel
@@ -14,8 +14,8 @@ class MainViewModel(
     private val getPlacesUseCase: GetPlacesUseCase
 ) : BaseViewModel() {
 
-    private val _places = MutableLiveData<Places>()
-    internal val places: LiveData<Places> = _places
+    private val _places = MutableLiveData<List<Venue>>()
+    internal val venuesAndGeocode: LiveData<List<Venue>> = _places
 
     fun search(queryText: String) {
         Timber.e("MainViewModel >> $queryText")
@@ -33,7 +33,7 @@ class MainViewModel(
     private fun handleResult(result: GetPlacesUseCase.Result) {
         Timber.e("MainViewModel result >> $result")
         if (result is GetPlacesUseCase.Result.Success) {
-            _places.value = result.places
+            _places.value = result.venuesAndGeocode
             hideProgress()
         }
 //        when (result) {
