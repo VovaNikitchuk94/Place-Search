@@ -12,6 +12,8 @@ import com.vnykyt.placesearch.api.repository.PlacesRepository
 import com.vnykyt.placesearch.config.EnvironmentConfig
 import com.vnykyt.placesearch.data.network.api.MapsClient
 import com.vnykyt.placesearch.data.network.api.PlacesClient
+import com.vnykyt.placesearch.data.network.errorhandling.ExceptionFactory
+import com.vnykyt.placesearch.data.network.errorhandling.RxErrorHandlingCallAdapterFactory
 import com.vnykyt.placesearch.data.repository.DataMapsRepository
 import com.vnykyt.placesearch.data.repository.DataPlacesRepository
 import okhttp3.Interceptor
@@ -19,6 +21,7 @@ import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -61,13 +64,13 @@ object DataModule {
                 .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .build()
         }
-//        single { ExceptionFactory() }
-//        single<CallAdapter.Factory> { RxErrorHandlingCallAdapterFactory(get(), get(), get()) }
+        single { ExceptionFactory() }
+        single<CallAdapter.Factory> { RxErrorHandlingCallAdapterFactory(get()) }
         single<Converter.Factory>(named(QUALIFIER_GSON_CONVERTER_FACTORY)) { GsonConverterFactory.create(get()) }
         single(named(QUALIFIER_PLACES_RETROFIT)) {
             Retrofit.Builder()
                 .addConverterFactory(get(named(QUALIFIER_GSON_CONVERTER_FACTORY)))
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addCallAdapterFactory(get())
                 .baseUrl(EnvironmentConfig.foursquareBaseUrl())
                 .client(get(named(QUALIFIER_OKHTTP)))
                 .build()
@@ -76,23 +79,14 @@ object DataModule {
         single(named(QUALIFIER_MAPS_RETROFIT)) {
             Retrofit.Builder()
                 .addConverterFactory(get(named(QUALIFIER_GSON_CONVERTER_FACTORY)))
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addCallAdapterFactory(get())
                 .baseUrl(EnvironmentConfig.googleMapsBaseUrl())
                 .client(get(named(QUALIFIER_OKHTTP)))
                 .build()
         }
 
-        single { PreferenceManager.getDefaultSharedPreferences(get()) }
-
-//        single { SettingsPersister(get()) }
-//        single {
-//            Places.initialize(get(), EnvironmentConfig.googlePlacesApiKey())
-//            Places.createClient(get())
-//        }
-//        single<LocationProvider> { AndroidLocationProvider(get()) }
         single { Geocoder(get(), Locale.US) }
 
-        // Repositories
         single<PlacesRepository> { DataPlacesRepository(get()) }
         single<MapsRepository> { DataMapsRepository(get()) }
 
