@@ -2,6 +2,7 @@ package com.vnykyt.placesearch.presentation.feature.splash
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -17,6 +18,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         viewBinding.root.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
@@ -34,5 +36,10 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
             }
         })
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 }

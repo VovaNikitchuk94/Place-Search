@@ -56,7 +56,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                 .position(LatLng(venue.location.lat, venue.location.lng))
                 .snippet(venue.location.formattedAddress.firstOrNull() ?: "")
                 .title(venue.name)
-                .icon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_place).bitmapDescriptorFromVector())
+                .icon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_place_32).bitmapDescriptorFromVector())
         ).apply {
             tag = venue.id
         }

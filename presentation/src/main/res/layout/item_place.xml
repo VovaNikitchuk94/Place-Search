@@ -99,6 +99,7 @@
             android:maxLines="2"
             android:textColor="#838ea4"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/text_name"
             app:layout_constraintTop_toBottomOf="@id/text_address"

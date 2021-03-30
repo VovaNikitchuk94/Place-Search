@@ -9,12 +9,11 @@ abstract class BaseViewModel : ViewModel() {
 
     protected val disposables: CompositeDisposable by lazy { CompositeDisposable() }
 
-    protected val _showProgress = MutableLiveData<Boolean>()
-
+    private val _showProgress = MutableLiveData<Boolean>()
     val showProgress: LiveData<Boolean> = _showProgress
-    protected val _error = MutableLiveData<Throwable>()
 
-    val error: LiveData<Throwable> = _error
+    private val _error = MutableLiveData<Throwable?>()
+    val error: LiveData<Throwable?> = _error
 
     override fun onCleared() {
         disposables.clear()
@@ -27,5 +26,13 @@ abstract class BaseViewModel : ViewModel() {
 
     protected fun hideProgress() {
         _showProgress.value = false
+    }
+
+    protected fun clearError() {
+        _error.value = null
+    }
+
+    protected fun setError(error: Throwable) {
+        _error.value = error
     }
 }

@@ -23,8 +23,20 @@ class MapViewModel(
     }
 
     private fun handleResult(result: GetPlacesWithDistanceUseCase.Result) {
-        if (result is GetPlacesWithDistanceUseCase.Result.Success) {
-            _venuesAndGeocode.value = result.venues
+        when (result) {
+            is GetPlacesWithDistanceUseCase.Result.Idle -> {
+                showProgress()
+                clearError()
+            }
+            is GetPlacesWithDistanceUseCase.Result.Success -> {
+                hideProgress()
+                clearError()
+                _venuesAndGeocode.value = result.venues
+            }
+            is GetPlacesWithDistanceUseCase.Result.Failure -> {
+                hideProgress()
+                setError(result.throwable)
+            }
         }
     }
 }
