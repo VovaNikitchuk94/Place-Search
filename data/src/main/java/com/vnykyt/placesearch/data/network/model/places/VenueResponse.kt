@@ -1,4 +1,4 @@
-package com.vnykyt.placesearch.data.network.model
+package com.vnykyt.placesearch.data.network.model.places
 
 internal data class VenueResponse(
     val id: String,
@@ -6,14 +6,15 @@ internal data class VenueResponse(
     val categories: List<CategoryResponse>?,
     val delivery: DeliveryResponse?,
     val location: LocationResponse?,
-
     val bestPhoto: PhotoResponse?,
     val contact: ContactResponse?,
     val defaultHours: HoursResponse?,
     val hours: HoursResponse?,
     val rating: Double?,
     val ratingColor: String?,
-    val url: String?
+    val url: String?,
+    val attributes: AttributesResponse?,
+    val price: PriceResponse?
 )
 
 internal data class CategoryResponse(

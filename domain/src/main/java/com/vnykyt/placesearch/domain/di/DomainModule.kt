@@ -7,7 +7,7 @@ import org.koin.dsl.module
 object DomainModule {
 
     fun get() = module {
-        factory { GetPlacesUseCase(get()) }
-        factory { GetPlaceDetailsUseCase(get()) }
+        factory { GetPlacesUseCase(get(), get()) }
+        factory { GetPlaceDetailsUseCase(get(), get()) }
     }
 }

@@ -46,4 +46,20 @@ internal class AppResourcesManager(private val activityProvider: ActivityProvide
             Timber.w(e, "sendMessage")
         }
     }
+
+    override fun startNavigation(origin: String, destination: String) {
+        val googleMapsUrl = "http://maps.google.com/maps?saddr=47.6062,-122.3321&daddr=$destination"
+        val uri = Uri.parse(googleMapsUrl)
+
+        val googleMapsPackage = "com.google.android.apps.maps"
+        val intent = Intent(Intent.ACTION_VIEW, uri).apply {
+            setPackage(googleMapsPackage)
+        }
+
+        try {
+            context.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Timber.w(e, "openLink")
+        }
+    }
 }

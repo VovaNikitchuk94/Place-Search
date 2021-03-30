@@ -27,7 +27,6 @@ object Config {
         const val rxBinding = "4.0.0"
         const val rxKotlin = "3.0.1"
         const val rxRelay = "3.0.0"
-        const val rxPermissions = "0.12"
 
         // Arch components
         const val acLifecycle = "2.2.0"
@@ -38,7 +37,7 @@ object Config {
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
         const val fragmentKtx = "1.3.0"
-        const val constraintLayout = "2.0.4"
+        const val constraintLayout = "2.1.0-beta01"
         const val lottie = "3.6.1"
         const val viewBindingDelegate = "1.4.4"
         const val picasso = "2.71828"

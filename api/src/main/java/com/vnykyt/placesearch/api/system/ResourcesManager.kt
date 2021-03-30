@@ -7,4 +7,6 @@ interface ResourcesManager {
     fun makeCall(phoneNumber: String)
 
     fun sendMessage(phoneNumber: String, message: String)
+
+    fun startNavigation(origin: String = "", destination: String)
 }

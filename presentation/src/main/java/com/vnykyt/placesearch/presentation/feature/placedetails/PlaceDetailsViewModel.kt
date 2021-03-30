@@ -15,8 +15,13 @@ class PlaceDetailsViewModel(
     private val resourcesManager: ResourcesManager
 ) : BaseViewModel() {
 
+    private val hexColorRegex: Regex by lazy { Regex("^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\$") }
+
     private val _venue = MutableLiveData<Venue>()
     internal val venue: LiveData<Venue> = _venue
+
+    private val _mapImageLink = MutableLiveData<String>()
+    internal val mapImageLink: LiveData<String> = _mapImageLink
 
     fun getPlacesDetails(id: String) {
         getPlaceDetailsUseCase.execute(GetPlaceDetailsUseCase.Action(id))
@@ -28,7 +33,9 @@ class PlaceDetailsViewModel(
     private fun handleResult(result: GetPlaceDetailsUseCase.Result) {
         Timber.e("PlaceDetailsViewModel result >> $result")
         if (result is GetPlaceDetailsUseCase.Result.Success) {
-            _venue.value = result.venue
+            val ratingColor = getRatingColor(result.venue.ratingColor)
+            _venue.value = result.venue.copy(ratingColor = ratingColor)
+            _mapImageLink.value = result.mapImageUrl
             hideProgress()
         }
 //        when (result) {
@@ -52,5 +59,16 @@ class PlaceDetailsViewModel(
     fun onVisitWebsiteClicked() {
         resourcesManager.openLink(requireNotNull(_venue.value).url)
     }
+
+    fun onNavigateClicked() {
+        resourcesManager.startNavigation(destination = requireNotNull(_venue.value).location.coordinates)
+    }
+
+    private fun getRatingColor(color: String): String {
+        val placeColor = "#$color"
+        return if (isColorValid(placeColor)) placeColor else "#000000"
+    }
+
+    private fun isColorValid(color: String) = hexColorRegex.matches(color)
 
 }

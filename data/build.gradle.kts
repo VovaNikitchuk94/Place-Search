@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":api"))
+    implementation(project(":config"))
 
     implementation(Config.Libs.koin)
     implementation(Config.Libs.koinCore)

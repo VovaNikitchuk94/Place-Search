@@ -12,7 +12,10 @@ data class Venue(
     val hours: Hours,
     val rating: Double,
     val ratingColor: String,
-    val url: String
+    val url: String,
+    val distance: String,
+    val attributes: Attributes,
+    val price: Price
 ) {
 
     companion object {
@@ -29,7 +32,10 @@ data class Venue(
             hours = Hours.EMPTY,
             rating = 0.0,
             ratingColor = "",
-            url = ""
+            url = "",
+            distance = "",
+            attributes = Attributes(emptyList()),
+            price = Price.EMPTY
         )
     }
 }

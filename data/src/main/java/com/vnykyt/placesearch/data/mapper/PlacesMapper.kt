@@ -1,5 +1,6 @@
 package com.vnykyt.placesearch.data.mapper
 
+import com.vnykyt.placesearch.api.model.place.Attributes
 import com.vnykyt.placesearch.api.model.place.Category
 import com.vnykyt.placesearch.api.model.place.Center
 import com.vnykyt.placesearch.api.model.place.Contact
@@ -7,31 +8,37 @@ import com.vnykyt.placesearch.api.model.place.Delivery
 import com.vnykyt.placesearch.api.model.place.Feature
 import com.vnykyt.placesearch.api.model.place.Geocode
 import com.vnykyt.placesearch.api.model.place.Geometry
+import com.vnykyt.placesearch.api.model.place.Group
+import com.vnykyt.placesearch.api.model.place.GroupType
 import com.vnykyt.placesearch.api.model.place.Hours
 import com.vnykyt.placesearch.api.model.place.Icon
 import com.vnykyt.placesearch.api.model.place.Location
 import com.vnykyt.placesearch.api.model.place.Open
 import com.vnykyt.placesearch.api.model.place.Photo
+import com.vnykyt.placesearch.api.model.place.Price
 import com.vnykyt.placesearch.api.model.place.Provider
 import com.vnykyt.placesearch.api.model.place.TimeFrame
 import com.vnykyt.placesearch.api.model.place.Venue
 import com.vnykyt.placesearch.api.model.place.VenuesAndGeocode
-import com.vnykyt.placesearch.data.network.model.CategoryResponse
-import com.vnykyt.placesearch.data.network.model.ContactResponse
-import com.vnykyt.placesearch.data.network.model.DeliveryResponse
-import com.vnykyt.placesearch.data.network.model.FeatureResponse
-import com.vnykyt.placesearch.data.network.model.GeocodeResponse
-import com.vnykyt.placesearch.data.network.model.GeometryResponse
-import com.vnykyt.placesearch.data.network.model.HoursResponse
-import com.vnykyt.placesearch.data.network.model.IconResponse
-import com.vnykyt.placesearch.data.network.model.LocationResponse
-import com.vnykyt.placesearch.data.network.model.OpenResponse
-import com.vnykyt.placesearch.data.network.model.PhotoResponse
-import com.vnykyt.placesearch.data.network.model.PlacesResponse
-import com.vnykyt.placesearch.data.network.model.ProviderResponse
-import com.vnykyt.placesearch.data.network.model.TimeframeResponse
-import com.vnykyt.placesearch.data.network.model.VenueAndGeocodeResponse
-import com.vnykyt.placesearch.data.network.model.VenueResponse
+import com.vnykyt.placesearch.data.network.model.places.AttributesResponse
+import com.vnykyt.placesearch.data.network.model.places.CategoryResponse
+import com.vnykyt.placesearch.data.network.model.places.ContactResponse
+import com.vnykyt.placesearch.data.network.model.places.DeliveryResponse
+import com.vnykyt.placesearch.data.network.model.places.FeatureResponse
+import com.vnykyt.placesearch.data.network.model.places.GeocodeResponse
+import com.vnykyt.placesearch.data.network.model.places.GeometryResponse
+import com.vnykyt.placesearch.data.network.model.places.GroupResponse
+import com.vnykyt.placesearch.data.network.model.places.HoursResponse
+import com.vnykyt.placesearch.data.network.model.places.IconResponse
+import com.vnykyt.placesearch.data.network.model.places.LocationResponse
+import com.vnykyt.placesearch.data.network.model.places.OpenResponse
+import com.vnykyt.placesearch.data.network.model.places.PhotoResponse
+import com.vnykyt.placesearch.data.network.model.places.PlacesResponse
+import com.vnykyt.placesearch.data.network.model.places.PriceResponse
+import com.vnykyt.placesearch.data.network.model.places.ProviderResponse
+import com.vnykyt.placesearch.data.network.model.places.TimeframeResponse
+import com.vnykyt.placesearch.data.network.model.places.VenueAndGeocodeResponse
+import com.vnykyt.placesearch.data.network.model.places.VenueResponse
 
 internal fun PlacesResponse<VenueAndGeocodeResponse>.toVenuesAndGeocode() = VenuesAndGeocode(
     venue = response.venues.map { it.toVenue() },
@@ -50,7 +57,26 @@ internal fun VenueResponse.toVenue() = Venue(
     hours = hours?.toHours() ?: Hours.EMPTY,
     rating = rating ?: 0.0,
     ratingColor = ratingColor ?: "",
-    url = url ?: ""
+    url = url ?: "",
+    distance = "",
+    attributes = attributes?.toAttributes() ?: Attributes(emptyList()),
+    price = price?.toPrice() ?: Price.EMPTY
+)
+
+internal fun AttributesResponse.toAttributes() = Attributes(
+    groups = groups?.map { it.toGroup() } ?: emptyList()
+)
+
+internal fun GroupResponse.toGroup() = Group(
+    type = GroupType.fromValue(type),
+    name = name ?: "",
+    summary = summary ?: ""
+)
+
+internal fun PriceResponse.toPrice() = Price(
+    tier = tier ?: 0,
+    message = message ?: "",
+    currency = currency ?: ""
 )
 
 internal fun PhotoResponse.toPhoto() = Photo(

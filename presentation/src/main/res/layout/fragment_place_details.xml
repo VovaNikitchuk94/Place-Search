@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_place_details_scene">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_center_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_toolbar_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="60dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/main_info_barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="action_directions_walk,action_directions_walk" />
+
+    <View
+        android:id="@+id/main_info_place_holder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_map" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_place_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@id/main_info_barrier"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/image_map"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_place_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/main_info_barrier"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/text_place_name"
+        tools:text="@tools:sample/lorem[2]" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_distance_from_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_place_category"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        tools:text="900m" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_directions_walk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:elevation="0dp"
+        android:src="@drawable/ic_directions_walk"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/main_info_place_holder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_info_place_holder"
+        app:pressedTranslationZ="0dp"
+        app:tint="@color/blue"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/divider_main_info"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="?android:listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_info_place_holder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/action_call"
+        style="@style/PlaceDetails.ActionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:drawableTop="@drawable/ic_call"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:text="@string/place_details.call"
+        app:layout_constraintEnd_toStartOf="@id/action_website"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_main_info" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/action_website"
+        style="@style/PlaceDetails.ActionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_open_in_new"
+        android:text="@string/place_details.open"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintBottom_toBottomOf="@id/action_call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/action_call"
+        app:layout_constraintTop_toTopOf="@id/action_call" />
+
+    <View
+        android:id="@+id/divider_actions"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action_call" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_address"
+        style="@style/PlaceDetails.TextView"
+        android:layout_width="0dp"
+        android:drawableStart="@drawable/ic_place"
+        tools:text="address" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_hours"
+        style="@style/PlaceDetails.TextView"
+        android:layout_width="0dp"
+        android:drawableStart="@drawable/ic_access_time"
+        tools:text="hours" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_phone_number"
+        style="@style/PlaceDetails.TextView"
+        android:layout_width="0dp"
+        tools:visibility="gone"
+        android:drawableStart="@drawable/ic_call"
+        tools:text="phone_number" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_rating"
+        style="@style/PlaceDetails.TextView"
+        android:layout_width="0dp"
+        android:drawableStart="@drawable/ic_rating"
+        tools:text="rating" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_price"
+        style="@style/PlaceDetails.TextView"
+        android:layout_width="0dp"
+        tools:visibility="gone"
+        android:drawableStart="@drawable/ic_price"
+        tools:text="price" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="text_address,text_hours,text_phone_number,text_rating,text_price"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/divider_actions">
+
+    </androidx.constraintlayout.helper.widget.Flow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_map" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:fitsSystemWindows="true"
+        android:scaleType="center"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_center_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_map_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/action_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@null"
+        android:padding="8dp"
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_toolbar_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

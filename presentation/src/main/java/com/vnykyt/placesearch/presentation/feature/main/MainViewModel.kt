@@ -14,8 +14,8 @@ class MainViewModel(
     private val getPlacesUseCase: GetPlacesUseCase
 ) : BaseViewModel() {
 
-    private val _places = MutableLiveData<VenuesAndGeocode>()
-    internal val venuesAndGeocode: LiveData<VenuesAndGeocode> = _places
+    private val _places = MutableLiveData<List<Venue>>()
+    internal val venuesAndGeocode: LiveData<List<Venue>> = _places
 
     fun search(queryText: String) {
         Timber.e("MainViewModel >> $queryText")

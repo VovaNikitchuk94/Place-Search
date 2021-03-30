@@ -1,8 +1,8 @@
 package com.vnykyt.placesearch.data.network.api
 
-import com.vnykyt.placesearch.data.network.model.PlacesResponse
-import com.vnykyt.placesearch.data.network.model.VenueAndGeocodeResponse
-import com.vnykyt.placesearch.data.network.model.VenueDetailsResponse
+import com.vnykyt.placesearch.data.network.model.places.PlacesResponse
+import com.vnykyt.placesearch.data.network.model.places.VenueAndGeocodeResponse
+import com.vnykyt.placesearch.data.network.model.places.VenueDetailsResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

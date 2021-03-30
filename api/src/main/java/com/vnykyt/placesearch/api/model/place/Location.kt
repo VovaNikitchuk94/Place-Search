@@ -30,4 +30,7 @@ data class Location(
             state = ""
         )
     }
+
+    val coordinates: String
+        get() = "$lat,$lng"
 }

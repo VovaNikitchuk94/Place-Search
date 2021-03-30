@@ -41,7 +41,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             .subscribe {
 //                viewModel.placeClicked(it.venue)
 
-                viewBinding.root.findNavController().navigate(MainFragmentDirections.actionPlaceDetailsScreen(it.id))
+                viewBinding.root.findNavController().navigate(MainFragmentDirections.actionPlaceDetailsScreen(it.id, it.venue.distance))
             }
 
         observeUpdates()
@@ -59,7 +59,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         viewModel.venuesAndGeocode.observe(viewLifecycleOwner, { places ->
             Timber.e("MainFragment >> $places")
-            placeListAdapter.submitList(places.venue.map { PlaceListItem(venue = it) })
+            placeListAdapter.submitList(places.map { PlaceListItem(venue = it) })
         })
     }
 }

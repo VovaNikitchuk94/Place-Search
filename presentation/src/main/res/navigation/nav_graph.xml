@@ -48,6 +48,11 @@
             app:argType="string"
             app:nullable="false" />
 
+        <argument
+            android:name="distance"
+            app:argType="string"
+            app:nullable="false" />
+
     </fragment>
 
 </navigation>
