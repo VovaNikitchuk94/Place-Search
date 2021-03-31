@@ -10,7 +10,11 @@ android {
 
     defaultConfig {
         applicationId = Config.Android.applicationId
-        testInstrumentationRunner =  "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders(
+            mapOf("GOOGLE_MAPS_API_KEY" to Secret.GOOGLE_MAPS_KEY)
+        )
     }
 
     buildFeatures {

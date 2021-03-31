@@ -18,6 +18,7 @@ object PresentationModule {
         single { ActivityProvider() }
         single<ResourcesManager> { AppResourcesManager(get()) }
         single<ErrorHandler> { AppErrorHandler() }
+
         viewModel { SplashViewModel() }
         viewModel { MainViewModel(get()) }
         viewModel { MapViewModel(get()) }
