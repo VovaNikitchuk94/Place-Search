@@ -16,7 +16,7 @@ internal interface PlacesClient {
     fun getPlaces(
         @Query("query") query: String,
         @Query("near") near: String = "Seattle,+WA",
-        @Query("limit") limit: Int = 2,
+        @Query("limit") limit: Int = 20,
         @Tag authorization: AuthorizationType = AuthorizationType.FOURSQUARE
     ): Single<PlacesResponse<VenueAndGeocodeResponse>>
 
