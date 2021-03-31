@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.PlaceSearch.ContentLoadingProgress">
+        <item name="colorAccent">@color/blue_accent</item>
+    </style>
+
+    <style name="PlaceDetails.TextView" parent="TextAppearance.AppCompat">
+        <item name="android:drawablePadding">16dp</item>
+        <item name="drawableTint">@color/blue</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="PlaceDetails.ActionTextView" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue</item>
+        <item name="drawableTint">@color/blue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+</resources>

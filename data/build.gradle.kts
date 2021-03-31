@@ -6,8 +6,10 @@ plugins {
 
 dependencies {
     implementation(project(":api"))
+    api(project(":config"))
 
     implementation(Config.Libs.koin)
+    implementation(Config.Libs.koinCore)
     implementation(Config.Libs.rxKotlin)
     implementation(Config.Libs.locationService)
     implementation(Config.Libs.threeTenAbp)
@@ -24,4 +26,10 @@ dependencies {
     implementation(Config.Libs.room)
     kapt(Config.Libs.roomCompiler)
     implementation(Config.Libs.roomKtx)
+
+    testRuntimeOnly(Config.Libs.jUnitEngine)
+    testImplementation(Config.Libs.mockWebServer)
+    testImplementation(Config.Libs.jUnitApi)
+    testImplementation(Config.Libs.jUnitParams)
+    testImplementation(Config.Libs.mockitoCore)
 }

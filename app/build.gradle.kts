@@ -10,9 +10,11 @@ android {
 
     defaultConfig {
         applicationId = Config.Android.applicationId
-        testInstrumentationRunner =  "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("Boolean", "IS_MONITORING_ENABLED", "true")
+        manifestPlaceholders(
+            mapOf("GOOGLE_MAPS_API_KEY" to Secret.GOOGLE_MAPS_KEY)
+        )
     }
 
     buildFeatures {
@@ -21,10 +23,13 @@ android {
 }
 
 dependencies {
-    api(project(":data"))
-    api(project(":domain"))
-    api(project(":presentation"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":presentation"))
 
-    // Development
+    implementation(Config.Libs.koin)
+    implementation(Config.Libs.timber)
+    implementation(Config.Libs.rxAndroid)
     implementation(Config.Libs.stetho)
+    implementation(Config.Libs.appcompat)
 }

@@ -19,27 +19,29 @@ object Config {
         const val googlePlayServices = "4.3.5"
 
         // DI
-        const val koin_version = "2.2.2"
+        const val koin = "2.2.2"
 
         // RxJava
         const val rxJava = "3.0.11"
         const val rxAndroid = "3.0.0"
         const val rxBinding = "4.0.0"
         const val rxKotlin = "3.0.1"
+        const val rxRelay = "3.0.0"
 
         // Arch components
-        const val acLifecycle = "2.3.0"
-        const val acNavigation = "2.3.3"
+        const val acLifecycle = "2.2.0"
+        const val acNavigation = "2.3.4"
 
         // UI
         const val materialComponents = "1.2.0"
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
+        const val fragmentKtx = "1.3.0"
         const val constraintLayout = "2.0.4"
-        const val inputMask = "4.1.0"
-        const val paging = "3.0.0-alpha09"
         const val lottie = "3.6.1"
-        const val glide = "4.11.0"
+        const val viewBindingDelegate = "1.4.4"
+        const val picasso = "2.71828"
+        const val picassoTransformations = "2.2.1"
 
         // Network
         const val gson = "2.8.6"
@@ -54,10 +56,11 @@ object Config {
         const val ktx = "1.3.2"
         const val threeTenAbp = "1.2.1"
         const val timber = "4.7.1"
-        const val preference = "1.1.1"
+        const val quickPermissions = "0.4.1"
 
-        //Google services
-        const val location_service = "18.0.0"
+        // Google
+        const val locationService = "18.0.0"
+        const val maps = "17.0.0"
 
         // Development
         const val stetho = "1.5.1"
@@ -75,13 +78,10 @@ object Config {
         const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
 
         // DI
-        const val koin = "org.koin:koin-android:${Versions.koin_version}"
-        const val koinScope = "org.koin:koin-android-scope:${Versions.koin_version}"
-        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin_version}"
-
-        // Glide
-        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-        const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+        const val koin = "org.koin:koin-android:${Versions.koin}"
+        const val koinCore = "org.koin:koin-core:${Versions.koin}"
+        const val koinScope = "org.koin:koin-android-scope:${Versions.koin}"
+        const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
 
         // Arch components
         const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.acLifecycle}"
@@ -92,18 +92,22 @@ object Config {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.acNavigation}"
 
         // UI
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
         const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
         const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-        const val pagination = "androidx.paging:paging-runtime:${Versions.paging}"
         const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+        const val viewBindingDelegate = "com.github.kirich1409:viewbindingpropertydelegate:${Versions.viewBindingDelegate}"
+        const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+        const val picassoTransformations = "jp.wasabeef:picasso-transformations:${Versions.picassoTransformations}"
 
         // RxJava
         const val rxJava = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
         const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
         const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:${Versions.rxKotlin}"
         const val rxBinding = "com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}"
+        const val rxRelay = "com.jakewharton.rxrelay3:rxrelay:${Versions.rxRelay}"
 
         // Network
         const val gson = "com.google.code.gson:gson:${Versions.gson}"
@@ -112,7 +116,7 @@ object Config {
         const val okHtttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-        const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+        const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
 
         // Room
         const val room = "androidx.room:room-runtime:${Versions.room}"
@@ -122,12 +126,20 @@ object Config {
         // Utils
         const val threeTenAbp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+        const val quickPermissions = "com.github.quickpermissions:quickpermissions-kotlin:${Versions.quickPermissions}"
 
-        //Google services
-        const val locationService = "com.google.android.gms:play-services-location:${Versions.location_service}"
+        // Google
+        const val locationService = "com.google.android.gms:play-services-location:${Versions.locationService}"
+        const val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
 
         // Development
         const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
         const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
+
+        // Tests
+        const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
+        const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit}"
+        const val jUnitParams = "org.junit.jupiter:junit-jupiter-params:${Versions.jUnit}"
+        const val mockitoCore = "org.mockito:mockito-inline:${Versions.mockitoCore}"
     }
 }

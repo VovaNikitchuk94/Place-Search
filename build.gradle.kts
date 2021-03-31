@@ -13,9 +13,10 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:${Config.Versions.gradlePlugin}")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Config.Versions.acNavigation}")
         classpath(kotlin("gradle-plugin", Config.Versions.kotlinLanguage))
         classpath("com.google.gms:google-services:${Config.Versions.googlePlayServices}")
-        classpath("org.koin:koin-gradle-plugin:${Config.Versions.koin_version}")
+        classpath("org.koin:koin-gradle-plugin:${Config.Versions.koin}")
     }
 }
 

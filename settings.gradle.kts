@@ -1,7 +1,8 @@
 include(":app")
-include(":data")
-include(":domain")
 include(":api")
+include(":domain")
+include(":data")
 include(":presentation")
+include(":config")
 
 rootProject.name = "Place Search"
