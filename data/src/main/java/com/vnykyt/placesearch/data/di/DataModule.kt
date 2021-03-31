@@ -12,6 +12,7 @@ import com.vnykyt.placesearch.api.repository.PlacesRepository
 import com.vnykyt.placesearch.config.EnvironmentConfig
 import com.vnykyt.placesearch.data.network.api.MapsClient
 import com.vnykyt.placesearch.data.network.api.PlacesClient
+import com.vnykyt.placesearch.data.network.auth.AuthInterceptor
 import com.vnykyt.placesearch.data.network.errorhandling.ExceptionFactory
 import com.vnykyt.placesearch.data.network.errorhandling.RxErrorHandlingCallAdapterFactory
 import com.vnykyt.placesearch.data.repository.DataMapsRepository
@@ -33,10 +34,12 @@ import java.util.concurrent.TimeUnit
 object DataModule {
 
     private const val QUALIFIER_LOGGING_INTERCEPTOR = "QUALIFIER_LOGGING_INTERCEPTOR"
+    private const val QUALIFIER_AUTH_INTERCEPTOR = "QUALIFIER_AUTH_INTERCEPTOR"
     private const val QUALIFIER_GSON_CONVERTER_FACTORY = "QUALIFIER_GSON_CONVERTER_FACTORY"
     private const val QUALIFIER_OKHTTP = "QUALIFIER_OKHTTP"
     private const val QUALIFIER_PLACES_RETROFIT = "QUALIFIER_PLACES_RETROFIT"
     private const val QUALIFIER_MAPS_RETROFIT = "QUALIFIER_MAPS_RETROFIT"
+
 
     private const val TIMEOUT_SECONDS = 30L
 
@@ -58,6 +61,7 @@ object DataModule {
         single(named(QUALIFIER_OKHTTP)) {
             OkHttpClient.Builder()
                 .addInterceptor(get<Interceptor>(named(QUALIFIER_LOGGING_INTERCEPTOR)))
+                .addInterceptor(get<Interceptor>(named(QUALIFIER_AUTH_INTERCEPTOR)))
                 .addNetworkInterceptor(StethoInterceptor())
                 .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
@@ -66,6 +70,7 @@ object DataModule {
         }
         single { ExceptionFactory() }
         single<CallAdapter.Factory> { RxErrorHandlingCallAdapterFactory(get()) }
+        single<Interceptor>(named(QUALIFIER_AUTH_INTERCEPTOR)) { AuthInterceptor() }
         single<Converter.Factory>(named(QUALIFIER_GSON_CONVERTER_FACTORY)) { GsonConverterFactory.create(get()) }
         single(named(QUALIFIER_PLACES_RETROFIT)) {
             Retrofit.Builder()

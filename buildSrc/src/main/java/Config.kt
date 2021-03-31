@@ -37,7 +37,7 @@ object Config {
         const val swipeRefreshLayout = "1.0.0"
         const val appcompat = "1.2.0"
         const val fragmentKtx = "1.3.0"
-        const val constraintLayout = "2.1.0-beta01"
+        const val constraintLayout = "2.0.4"
         const val lottie = "3.6.1"
         const val viewBindingDelegate = "1.4.4"
         const val picasso = "2.71828"
@@ -135,5 +135,11 @@ object Config {
         // Development
         const val stetho = "com.facebook.stetho:stetho:${Versions.stetho}"
         const val stethoOkHttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
+
+        // Tests
+        const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
+        const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit}"
+        const val jUnitParams = "org.junit.jupiter:junit-jupiter-params:${Versions.jUnit}"
+        const val mockitoCore = "org.mockito:mockito-inline:${Versions.mockitoCore}"
     }
 }

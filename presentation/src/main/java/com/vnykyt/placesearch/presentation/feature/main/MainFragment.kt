@@ -23,7 +23,6 @@ import com.vnykyt.placesearch.presentation.ui.DialogFactory
 import com.vnykyt.placesearch.presentation.ui.SpacingItemDecoration
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -49,7 +48,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         placeListAdapter.itemClickObservable
             .throttleFirst()
             .subscribe {
-//                viewModel.placeClicked(it.venue)
                 viewBinding.root.findNavController().navigate(MainFragmentDirections.actionPlaceDetailsScreen(it.id, it.venue.distance))
             }
 
@@ -76,7 +74,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         })
 
         viewModel.venuesAndGeocode.observe(viewLifecycleOwner, { places ->
-            Timber.e("MainFragment >> $places")
             placeListAdapter.submitList(places.map { PlaceListItem(venue = it) })
             viewBinding.actionOpenMap.isVisible = places.isNotEmpty()
             viewBinding.emptyStateView.isVisible = places.isEmpty()

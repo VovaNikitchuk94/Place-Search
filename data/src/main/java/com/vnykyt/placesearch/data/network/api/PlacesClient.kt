@@ -1,5 +1,6 @@
 package com.vnykyt.placesearch.data.network.api
 
+import com.vnykyt.placesearch.data.network.auth.AuthorizationType
 import com.vnykyt.placesearch.data.network.model.places.PlacesResponse
 import com.vnykyt.placesearch.data.network.model.places.VenueAndGeocodeResponse
 import com.vnykyt.placesearch.data.network.model.places.VenueDetailsResponse
@@ -7,6 +8,7 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Tag
 
 internal interface PlacesClient {
 
@@ -14,17 +16,13 @@ internal interface PlacesClient {
     fun getPlaces(
         @Query("query") query: String,
         @Query("near") near: String = "Seattle,+WA",
-        @Query("limit") limit: Int = 20,
-        @Query("client_id") client_id: String = "4WFDGRA3G5BPIN0PBNYQBGEKOKJPKSQH205OL1XJLEGI4UPG",
-        @Query("client_secret") client_secret: String = "HDF1YWNZKGQD5WDOVT53B3TIVHZNHSEXP3ISDYRTJZ1UFWR3",
-        @Query("v") v: String = "20190425"
+        @Query("limit") limit: Int = 2,
+        @Tag authorization: AuthorizationType = AuthorizationType.FOURSQUARE
     ): Single<PlacesResponse<VenueAndGeocodeResponse>>
 
     @GET("venues/{id}")
     fun getDetailsOfPlace(
         @Path("id") id: String,
-        @Query("client_id") client_id: String = "4WFDGRA3G5BPIN0PBNYQBGEKOKJPKSQH205OL1XJLEGI4UPG",
-        @Query("client_secret") client_secret: String = "HDF1YWNZKGQD5WDOVT53B3TIVHZNHSEXP3ISDYRTJZ1UFWR3",
-        @Query("v") v: String = "20190425"
+        @Tag authorization: AuthorizationType = AuthorizationType.FOURSQUARE
     ): Single<PlacesResponse<VenueDetailsResponse>>
 }

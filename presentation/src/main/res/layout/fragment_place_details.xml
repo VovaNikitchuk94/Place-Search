@@ -130,9 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
         android:drawableTop="@drawable/ic_call"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:text="@string/place_details.call"
         app:layout_constraintEnd_toStartOf="@id/action_website"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -181,7 +179,6 @@
         android:id="@+id/text_phone_number"
         style="@style/PlaceDetails.TextView"
         android:layout_width="0dp"
-        tools:visibility="gone"
         android:drawableStart="@drawable/ic_call"
         tools:text="phone_number" />
 
@@ -196,7 +193,6 @@
         android:id="@+id/text_price"
         style="@style/PlaceDetails.TextView"
         android:layout_width="0dp"
-        tools:visibility="gone"
         android:drawableStart="@drawable/ic_price"
         tools:text="price" />
 

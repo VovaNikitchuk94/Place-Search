@@ -5,17 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.vnykyt.placesearch.api.model.place.Venue
 import com.vnykyt.placesearch.api.system.ResourcesManager
 import com.vnykyt.placesearch.domain.usecase.GetPlaceDetailsUseCase
+import com.vnykyt.placesearch.domain.validator.ColorValidator
 import com.vnykyt.placesearch.presentation.base.BaseViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
-import timber.log.Timber
 
 class PlaceDetailsViewModel(
     private val getPlaceDetailsUseCase: GetPlaceDetailsUseCase,
     private val resourcesManager: ResourcesManager
 ) : BaseViewModel() {
-
-    private val hexColorRegex: Regex by lazy { Regex("^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\$") }
 
     private val _venue = MutableLiveData<Venue>()
     internal val venue: LiveData<Venue> = _venue
@@ -31,25 +29,23 @@ class PlaceDetailsViewModel(
     }
 
     private fun handleResult(result: GetPlaceDetailsUseCase.Result) {
-        Timber.e("PlaceDetailsViewModel result >> $result")
-        if (result is GetPlaceDetailsUseCase.Result.Success) {
-            val ratingColor = getRatingColor(result.venue.ratingColor)
-            _venue.value = result.venue.copy(ratingColor = ratingColor)
-            _mapImageLink.value = result.mapImageUrl
-            hideProgress()
+        when (result) {
+            is GetPlaceDetailsUseCase.Result.Idle -> {
+                showProgress()
+                clearError()
+            }
+            is GetPlaceDetailsUseCase.Result.Success -> {
+                hideProgress()
+                clearError()
+                val ratingColor = getRatingColor(result.venue.ratingColor)
+                _venue.value = result.venue.copy(ratingColor = ratingColor)
+                _mapImageLink.value = result.mapImageUrl
+            }
+            is GetPlaceDetailsUseCase.Result.Failure -> {
+                hideProgress()
+                setError(result.throwable)
+            }
         }
-//        when (result) {
-//            is GetPlacesUseCase.Result.Success -> {
-//                _places.setValue(places)
-//                hideProgress()
-//            }
-//            is GetPlacesUseCase.Result.Idle -> {
-//                showProgress()
-//            }
-//            is GetPlacesUseCase.Result.Failure -> {
-//                hideProgress()
-//            }
-//        }
     }
 
     fun onCallClicked() {
@@ -66,9 +62,6 @@ class PlaceDetailsViewModel(
 
     private fun getRatingColor(color: String): String {
         val placeColor = "#$color"
-        return if (isColorValid(placeColor)) placeColor else "#000000"
+        return if (ColorValidator.isColorValid(placeColor)) placeColor else "#000000"
     }
-
-    private fun isColorValid(color: String) = hexColorRegex.matches(color)
-
 }

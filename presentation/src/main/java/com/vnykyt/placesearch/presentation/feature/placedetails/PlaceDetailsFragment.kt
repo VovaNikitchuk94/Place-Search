@@ -4,8 +4,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,9 +19,9 @@ import com.vnykyt.placesearch.presentation.databinding.FragmentPlaceDetailsBindi
 import com.vnykyt.placesearch.presentation.extensions.throttleFirst
 import com.vnykyt.placesearch.presentation.ui.DialogFactory
 import com.vnykyt.placesearch.presentation.ui.loadImage
+import com.vnykyt.placesearch.presentation.ui.setViewVisibility
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class PlaceDetailsFragment : Fragment(R.layout.fragment_place_details) {
 
@@ -32,30 +30,9 @@ class PlaceDetailsFragment : Fragment(R.layout.fragment_place_details) {
     private val args by navArgs<PlaceDetailsFragmentArgs>()
     private var errorDialog: Dialog by errorDialog()
     private val errorHandler: ErrorHandler by inject()
-    private var lastProgress = 0f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Timber.e("PlaceDetailsFragment args >> ${args.placeId}")
-        viewBinding.root.setTransitionListener(object : MotionLayout.TransitionListener {
-            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {}
-
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
-
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, progress: Float) {
-//                if (p0 == null) return
-//
-//                if (progress - lastProgress > 0 && abs(progress - 1f) < 0.1f) {
-//                    requireActivity().window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//                } else if (progress < 0.8f) {
-//                    requireActivity().window?.decorView?.systemUiVisibility = 0
-//                }
-//                lastProgress = progress
-            }
-
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
-        })
 
         viewBinding.actionCall.clicks()
             .throttleFirst()
@@ -86,12 +63,10 @@ class PlaceDetailsFragment : Fragment(R.layout.fragment_place_details) {
         })
 
         viewModel.mapImageLink.observe(viewLifecycleOwner, { url ->
-            Timber.e("PlaceDetailsFragment >> $url")
             viewBinding.imageMap.loadImage(url)
         })
 
         viewModel.venue.observe(viewLifecycleOwner, { place ->
-            Timber.e("PlaceDetailsFragment >> $place")
             with(place) {
                 viewBinding.textPlaceName.text = name
                 categories.firstOrNull()?.let {
@@ -100,25 +75,23 @@ class PlaceDetailsFragment : Fragment(R.layout.fragment_place_details) {
                 location.formattedAddress.firstOrNull()?.let {
                     viewBinding.textAddress.text = it
                 }
-
                 val timeStatus = if (hours.status.isNotBlank()) hours.status else defaultHours.status
                 viewBinding.textHours.text = timeStatus
-                viewBinding.textHours.isVisible = timeStatus.isNotBlank()
-
                 viewBinding.textPhoneNumber.text = contact.formattedPhone
-                viewBinding.textPhoneNumber.isVisible = contact.formattedPhone.isNotBlank()
-
                 rating.toString().takeIf { it.isNotBlank() }?.let {
                     viewBinding.textRating.text = it
                     viewBinding.textRating.setTextColor(Color.parseColor(ratingColor))
                 }
-                viewBinding.textRating.isVisible = rating.toString().isNotBlank()
-
                 attributes.groups.find { it.type == GroupType.PRICE }?.let {
-                    viewBinding.textPrice.text = "${price.message} (${it.summary})"
+                    viewBinding.textPrice.text = getString(R.string.place_details_price, price.message, it.summary)
                 }
-                viewBinding.textPrice.isVisible = price.message.isNotBlank()
 
+                with(viewBinding.root) {
+                    setViewVisibility(price.message.isNotBlank(), viewBinding.textPrice.id)
+                    setViewVisibility(rating.toString().isNotBlank(), viewBinding.textRating.id)
+                    setViewVisibility(contact.formattedPhone.isNotBlank(), viewBinding.textPhoneNumber.id)
+                    setViewVisibility(timeStatus.isNotBlank(), viewBinding.textHours.id)
+                }
             }
         })
     }

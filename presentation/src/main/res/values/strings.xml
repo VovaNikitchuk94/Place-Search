@@ -12,6 +12,7 @@
     <string name="place_details.call">call</string>
     <string name="place_details.open">website</string>
     <string name="place_details.save">save</string>
+    <string name="place_details.price">%1$s (%2$s)</string>
 
     <string name="main.search_nothing_found">No data found</string>
 </resources>

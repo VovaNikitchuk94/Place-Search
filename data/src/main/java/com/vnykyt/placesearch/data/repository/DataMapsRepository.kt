@@ -1,6 +1,7 @@
 package com.vnykyt.placesearch.data.repository
 
 import com.vnykyt.placesearch.api.repository.MapsRepository
+import com.vnykyt.placesearch.config.EnvironmentConfig
 import com.vnykyt.placesearch.data.network.api.MapsClient
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -24,7 +25,7 @@ internal class DataMapsRepository(
             "&maptype=$MAP_TYPE" +
             "&markers=color:blue%7Clabel:A%7C$location" +
             "&markers=color:red%7Clabel:B%7C$CENTER" +
-            "&key=AIzaSyBsxCxoDEPykPuPn84H335z3aGNKat-54k"
+            "&key=${EnvironmentConfig.googleMapsApiKey()}"
     }
 
     override fun getMapDistance(location: String): Single<String> =

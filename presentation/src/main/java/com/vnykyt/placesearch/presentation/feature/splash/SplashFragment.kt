@@ -22,9 +22,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         viewBinding.root.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                SplashFragmentDirections.actionMainScreen()
                 viewBinding.root.findNavController().navigate(SplashFragmentDirections.actionMainScreen())
-//                viewModel.onAnimationFinish()
             }
 
             override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
